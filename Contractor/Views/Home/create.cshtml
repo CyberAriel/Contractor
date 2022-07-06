@@ -1,0 +1,63 @@
+﻿<style>
+    .addcontractor {
+    }
+
+    .namespace {
+        float: left;
+        width: 30%;
+    }
+
+    .todo {
+        float: left;
+        width: 70%;
+    }
+</style>
+
+
+
+@model Contractor.Contractors.ContractorData
+@{
+    ViewBag.Title = "Dodaj kontrachenta";
+}
+<h1>@ViewBag.Title</h1>
+
+
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-group">
+        <div class="namespace"><center>Nazwa kontrachenta</center></div>
+        <div class="todo">@Html.TextBoxFor(model => model.Name, new { @class = "form-control" })</div>
+    </div>
+    <div class="form-group">
+        <div class="namespace"><center>Nip</center></div>
+        <div class="todo">@Html.TextBoxFor(model => model.Nip, new { @class = "form-control" })</div>
+    </div>
+    <div class="form-group">
+        <div class="namespace"><center>Typ kontrachenta</center></div>
+        <div class="todo">
+            @Html.DropDownListFor(m => m.TypContractor,
+            new SelectList(Enum.GetValues(typeof(Contractor.Contractors.TypeOfContractor))),
+            "Wybierz", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="namespace"><center>Opis firmy</center></div>
+        <div class="todo">@Html.TextBoxFor(model => model.Desctiption, new { @class = "form-control" })</div>
+    </div>
+    <div class="form-group">
+        <div class="namespace"><center>Kontrachent aktywny</center></div>
+        <div class="todo">
+
+
+            @Html.CheckBoxFor(model => model.Activ)
+
+
+
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-default">Submit</button>
+}

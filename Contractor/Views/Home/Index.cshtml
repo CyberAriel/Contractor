@@ -1,0 +1,90 @@
+﻿<style>
+    .contractor {
+        
+        
+    }
+
+    .name {
+        float: left;
+        width: 50%;
+        
+    }
+
+    .nip {
+        float: left;
+        width: 50%;
+        
+    }
+    .menu {
+        
+    }
+    .add {
+        float: left;
+        width: 50%;
+    }
+    .edit {
+        float: left;
+        width: 50%;
+    }
+</style>
+
+
+@model IEnumerable<Contractor.Contractors.ContractorData>
+@{
+    ViewBag.Title = "Lista kontrachentów";
+}
+<h1>@ViewBag.Title</h1>
+
+
+<div class="menu">
+    <div class="add">
+            @Html.ActionLink("Dodaj", "create")
+    </div>
+    <div class="edit">
+            @Html.ActionLink("Edytuj", "Privacy")
+    </div>
+    </div>
+
+
+
+
+
+<div class="contractor">
+    <div class="name">
+        Nazwa Kontrachetna
+        @if (Model.Any())
+        {
+
+            <ul>
+                @foreach (var contractor in Model)
+                {
+                    <li>
+
+                        @contractor.Name
+
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+    <div class="nip">
+        Nip
+        @if (Model.Any())
+        {
+
+            <ul>
+                @foreach (var contractor in Model)
+                {
+                    <li>
+
+                        @contractor.Nip
+
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+
+
+

@@ -1,0 +1,71 @@
+﻿<style>
+    .addcontractor {
+    }
+
+    .namespace {
+        float: left;
+        width: 30%;
+    }
+
+    .todo {
+        float: left;
+        width: 70%;
+    }
+</style>
+
+
+
+@model Contractor.Contractors.ContractorData
+@{
+    ViewBag.Title = "Edytuj kontrachenta";
+}
+<h1>@ViewBag.Title</h1>
+
+
+
+@using (Html.BeginForm("EditStudent", "Home", FormMethod.Post))
+{
+
+
+
+    <div class="form-group">
+        <div class="namespace"><center>Nazwa kontrachenta</center></div>
+        <div class="todo">@Html.EditorFor(model => model.Name, "ab")</div>
+    </div>
+    <div class="form-group">
+        <div class="namespace"><center>Nip</center></div>
+        <div class="todo">@Html.EditorFor(c => c.Nip, new { @Value = "5" })</div>
+    </div>
+    <div class="form-group">
+        <div class="namespace"><center>Typ kontrachenta</center></div>
+        <div class="todo">
+            @Html.DropDownListFor(m => m.TypContractor,
+            new SelectList(Enum.GetValues(typeof(Contractor.Contractors.TypeOfContractor))),
+            "Wybierz", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="namespace"><center>Opis firmy</center></div>
+        <div class="todo">@Html.TextBoxFor(c => c.Desctiption, new { @Value = "5" })</div>
+    </div>
+    <div class="form-group">
+        <div class="namespace"><center>Kontrachent aktywny</center></div>
+        <div class="todo">
+
+
+            @Html.CheckBoxFor(model => model.Activ)
+
+
+
+        </div>
+    </div>
+
+
+
+
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+
+}
+
