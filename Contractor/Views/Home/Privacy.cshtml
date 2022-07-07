@@ -18,23 +18,22 @@
 @model Contractor.Contractors.ContractorData
 @{
     ViewBag.Title = "Edytuj kontrachenta";
+    ViewBag.Name = 1;
+
+
 }
 <h1>@ViewBag.Title</h1>
 
-
-
-@using (Html.BeginForm("EditStudent", "Home", FormMethod.Post))
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post))
 {
-
-
 
     <div class="form-group">
         <div class="namespace"><center>Nazwa kontrachenta</center></div>
-        <div class="todo">@Html.EditorFor(model => model.Name, "ab")</div>
+        <div class="todo">@Html.TextBoxFor(model => model.Name, new { @class = "form-control" })</div>
     </div>
     <div class="form-group">
         <div class="namespace"><center>Nip</center></div>
-        <div class="todo">@Html.EditorFor(c => c.Nip, new { @Value = "5" })</div>
+        <div class="todo">@Html.TextBoxFor(model => model.Nip, new { @class = "form-control" })</div>
     </div>
     <div class="form-group">
         <div class="namespace"><center>Typ kontrachenta</center></div>
@@ -46,17 +45,12 @@
     </div>
     <div class="form-group">
         <div class="namespace"><center>Opis firmy</center></div>
-        <div class="todo">@Html.TextBoxFor(c => c.Desctiption, new { @Value = "5" })</div>
+        <div class="todo">@Html.TextBoxFor(model => model.Desctiption, new { @class = "form-control" })</div>
     </div>
     <div class="form-group">
         <div class="namespace"><center>Kontrachent aktywny</center></div>
         <div class="todo">
-
-
             @Html.CheckBoxFor(model => model.Activ)
-
-
-
         </div>
     </div>
 

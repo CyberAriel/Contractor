@@ -9,14 +9,10 @@ namespace Contractor.Contractors
         public string? Name { get; set; }
         
         public int Nip { get; set; }
-
         public TypeOfContractor TypContractor { get; set; }
         [MaxLengthAttribute(500)]
         public string? Desctiption { get; set; }
         public bool Activ { get; set; }
-
-
-
     }
 
     public enum TypeOfContractor

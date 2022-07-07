@@ -13,8 +13,11 @@ namespace Contractor.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
 
+    
+
+    private readonly ILogger<HomeController> _logger;
+    public List<int> IDList = new List<int>();
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
@@ -22,21 +25,13 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        
         using (var context = new ContractorsContext())
         {
             
             var model = await context.Contractors.AsNoTracking().ToListAsync();
             return View(model);
         }
-       
-
-
-        
     }
-
-    
-
 
     [HttpGet]
     public IActionResult Create()
@@ -55,12 +50,6 @@ public class HomeController : Controller
         }
     }
 
-
-   
-
-
-
-
     public IActionResult Privacy()
     {
         return View();
@@ -73,15 +62,23 @@ public class HomeController : Controller
     }
    
 
-
     [HttpPost]
-    public async Task<IActionResult> EditStudent([Bind("Name,Nip,TypContractor,Activ, Desctiption")] ContractorData contractors)
+    public async Task<IActionResult> Edit([Bind("Name,Nip,TypContractor,Activ, Desctiption")] ContractorData contractors)
     {
+        
+
 
         int id = 1;
         using (var context = new ContractorsContext())
         {
             var entity = context.Contractors.FirstOrDefault(item => item.Id == id);
+            var model = await context.Contractors.AsNoTracking().ToListAsync();
+
+            foreach (var v in model)
+            {
+                IDList.Add(v.Id);
+            }
+
 
 
             if (entity != null)

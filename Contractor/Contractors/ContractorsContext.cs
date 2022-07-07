@@ -9,11 +9,11 @@ namespace Contractor.Contractors
         {
         }
 
-        //Constructor with DbContextOptions and the context class itself
+        
         public ContractorsContext(DbContextOptions<ContractorsContext> options) : base(options)
         {
         }
-        //Create the DataSet for the Employee         
+            
         public DbSet<ContractorData> Contractors { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -27,8 +27,6 @@ namespace Contractor.Contractors
                 var connectionString = configuration.GetConnectionString("EFConnection");
                 optionsBuilder.UseSqlServer(connectionString);
             }
- 
-
         }
 
 
